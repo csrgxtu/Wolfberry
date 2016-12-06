@@ -1,2 +1,4 @@
 # Wolfberry
 使用streaming方式处理wordcount，因为之前总是出现mapper.py not found之类的错误，所以这里专门研究一下。
+
+因为处理mongo的离线数据的缘故，开始写的Mapper，Reducer可以和Hadoop的streaming工作，然后今天到昨天，在服务器上总是出现文件找不到或者没权限的错误。所以这里为了解决streaming的工作方式问题，单起一个repo，来调用streaming，确认本机及测试，生产环境的streaming方式可以正常工作。
