@@ -14,10 +14,9 @@ for line in sys.stdin:
     doc = json.loads(line)
 
     for signal in doc['signals']:
-        print line
         # assemble a doc here
         if 'imei' in doc:
-            imei = doc['imei']
+            imei = doc.get('imei')
         else:
             imei = None
 
@@ -32,7 +31,14 @@ for line in sys.stdin:
             'rssi': signal['rssi']
         }
 
-        print '%s\t%s' % (rec['id'], json.dumps(rec))
+        receiveTimestamp = rec.get('receiveTimestamp')['$numberLong']
+        timestamp = rec.get('timestamp')['$numberLong']
+
+        # csvStr = rec.get('id') + ',' + doc.get('receiveTimestamp') + ',' + doc.get('jid') + ',' + doc.get('timestamp') + ',' + imei + ',' + None + ',' + signal.get('bssid') + ',' + signal.get('rssi')
+        csvStr = str(rec['id']) + ',' + receiveTimestamp + ',' + str(rec['jid']) + ',' + timestamp + ',' + str(rec['imei']) + ',,'
+        csvStr = csvStr + str(signal['bssid']) + ',' + str(signal['rssi'])
+
+        print '%s' % csvStr
 
 
 
