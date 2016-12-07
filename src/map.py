@@ -38,7 +38,7 @@ for line in sys.stdin:
         csvStr = str(rec['id']) + ',' + receiveTimestamp + ',' + str(rec['jid']) + ',' + timestamp + ',' + str(rec['imei']) + ',,'
         csvStr = csvStr + str(signal['bssid']) + ',' + str(signal['rssi'])
 
-        print '%s' % csvStr
+        print '%s\t%s' % ('key', csvStr)
 
 
 
